@@ -2,6 +2,7 @@
 add_theme_support( 'post-thumbnails' );
 // load css into the website's front-end
 function cfr_enqueue_style() {
+    global $wp_query; 
     wp_enqueue_style( 'cfr-style', get_stylesheet_uri() ); 
     wp_enqueue_style( 'custom-style-1', get_stylesheet_directory_uri().'/assets/css/custom1.css' ); 
     wp_enqueue_style( 'custom-style-2', get_stylesheet_directory_uri().'/assets/css/custom2.css' ); 
@@ -25,7 +26,15 @@ function cfr_enqueue_style() {
     wp_enqueue_script( 'bootstrap-scrollspy', get_stylesheet_directory_uri() . '/assets/js/bootstrap-scrollspy.js', array( 'jquery' ), false, true );
     wp_enqueue_script( 'mapbox-gl', get_stylesheet_directory_uri() . '/assets/js/v0.50.0-mapbox-gl.js', array( 'jquery' ), false, true );
     wp_enqueue_script( 'js-cst-map', get_stylesheet_directory_uri() . '/assets/js/js-cst-map.js', array( 'jquery' ), false, true );
-    wp_enqueue_script( 'ajax-js', get_stylesheet_directory_uri() . '/assets/js/ajax-time.js', array( 'jquery' ), false, true );
+    wp_enqueue_script( 'filter-ajax-script', get_stylesheet_directory_uri() . '/assets/js/ajax-time.js', array( 'jquery' ), false, true );
+    wp_localize_script(
+        'filter-ajax-script',
+        'filter_ajax_obj',
+        array(
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'query' => json_encode( $wp_query->query_vars ),
+        )
+    );
 }
     
 add_action( 'wp_enqueue_scripts', 'cfr_enqueue_style' );
@@ -248,5 +257,31 @@ function wpb_change_category_slug( $args, $taxonomy ) {
 add_filter( 'register_taxonomy_args', 'wpb_change_category_slug', 10, 2 );
 
 
+// Add custom AJAX action for getting filter data
+function get_filter_data() {
+    // Check if the selected value is set
+    if (isset($_POST['selected_value'])) {
+        $selected_value = sanitize_text_field($_POST['selected_value']);
+        
+        // Perform your logic to get the data based on the selected value
+        // For example, you might query posts or taxonomy terms based on the selected value
+        
+        // Example response (replace with your actual data retrieval logic)
+        $response = array(
+            'status' => 'success',
+            'data' => 'Data for selected value: ' . $selected_value
+        );
+    } else {
+        $response = array(
+            'status' => 'error',
+            'message' => 'No selected value provided'
+        );
+    }
+
+    // Return the response as JSON
+    wp_send_json($response);
+}
+add_action('wp_ajax_get_filter_data', 'get_filter_data');
+add_action('wp_ajax_nopriv_get_filter_data', 'get_filter_data');
 
 ?>
