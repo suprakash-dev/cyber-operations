@@ -1,0 +1,15 @@
+/*
+Theme Name: Cyber Operations
+Theme URI: https://www.cfr.org/cyber-operations/
+Author: the CFR team
+Author URI: https://www.cfr.org/cyber-operations/
+Description: Founded in 1921, CFR is a nonpartisan, independent national membership organization, think tank, educator, and publisher, including of Foreign Affairs.
+Text Domain: cfr-domain
+*/
+
+*,
+:after,
+:before {
+	box-sizing: border-box
+}
+
