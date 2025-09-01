@@ -75,102 +75,102 @@
         });
       };
 
-      // Drupal.behaviors.cst.attach.handleDropdowns = function () {
-      //   $(".view-cst-timeline .form-select").on("change", function () {
-      //     var $this = $(this);
-      //     var label = $this.parents(".form-item").find("label").text();
+      Drupal.behaviors.cst.attach.handleDropdowns = function () {
+        $(".view-cst-timeline .form-select").on("change", function () {
+          var $this = $(this);
+          var label = $this.parents(".form-item").find("label").text();
 
-      //     if ($this.val() === "All") {
-      //       $this
-      //         .parents(".form-item")
-      //         .find(".select2-selection__rendered")
-      //         .attr("title", label)
-      //         .html(label);
-      //     }
+          if ($this.val() === "All") {
+            $this
+              .parents(".form-item")
+              .find(".select2-selection__rendered")
+              .attr("title", label)
+              .html(label);
+          }
 
-      //     if (
-      //       $this.attr("name") === "field_suspected_state_sponsor_target_id"
-      //     ) {
-      //       switch ($this.val()) {
-      //         case "Unknown":
-      //           $this.val("Any");
-      //           $(
-      //             'select[name="field_suspected_state_sponsor_target_id_1"]',
-      //           ).val("1");
-      //           break;
-      //         default:
-      //           $(
-      //             'select[name="field_suspected_state_sponsor_target_id_1"]',
-      //           ).val("All");
-      //           break;
-      //       }
-      //     }
+          if (
+            $this.attr("name") === "field_suspected_state_sponsor_target_id"
+          ) {
+            switch ($this.val()) {
+              case "Unknown":
+                $this.val("Any");
+                $(
+                  'select[name="field_suspected_state_sponsor_target_id_1"]',
+                ).val("1");
+                break;
+              default:
+                $(
+                  'select[name="field_suspected_state_sponsor_target_id_1"]',
+                ).val("All");
+                break;
+            }
+          }
 
-      //     $("body").removeClass("filters--open");
-      //     $(".view-filters").removeClass("view-filters--open");
+          $("body").removeClass("filters--open");
+          $(".view-filters").removeClass("view-filters--open");
 
-      //     $this.parents("form").find(".form-submit").trigger("click");
-      //   });
+          //$this.parents("form").find(".form-submit").trigger("click");
+        });
 
-      //   Drupal.behaviors.cst.attach.renderFilters();
-      // };
+        Drupal.behaviors.cst.attach.renderFilters();
+      };
 
-      // Drupal.behaviors.cst.attach.renderFilters = function () {
-      //   var dropdowns = {};
+      Drupal.behaviors.cst.attach.renderFilters = function () {
+        var dropdowns = {};
 
-      //   $(".view-cst-timeline .form-select")
-      //     .not('select[name="field_suspected_state_sponsor_target_id_1"]')
-      //     .each(function () {
-      //       var $this = $(this);
+        $(".view-cst-timeline .form-select")
+          .not('select[name="field_suspected_state_sponsor_target_id_1"]')
+          .each(function () {
+            var $this = $(this);
 
-      //       if ($this.val() !== "All") {
-      //         dropdowns[$this.attr("name")] = {
-      //           id: $this.attr("id"),
-      //           key: $this.find("option:selected").text(),
-      //         };
-      //       }
+            if ($this.val() !== "All") {
+              dropdowns[$this.attr("name")] = {
+                id: $this.attr("id"),
+                key: $this.find("option:selected").text(),
+              };
+            }
 
-      //       if (
-      //         $this.attr("name") === "field_suspected_state_sponsor_target_id"
-      //       ) {
-      //         if (
-      //           $(
-      //             'select[name="field_suspected_state_sponsor_target_id_1"]',
-      //           ).val() === "1"
-      //         ) {
-      //           var el = $(
-      //             'select[name="field_suspected_state_sponsor_target_id"]',
-      //           );
-      //           el.parents(".form-item")
-      //             .find(".select2-selection__rendered")
-      //             .attr("title", "Unknown")
-      //             .html("Unknown");
+            if (
+              $this.attr("name") === "field_suspected_state_sponsor_target_id"
+            ) {
+              if (
+                $(
+                  'select[name="field_suspected_state_sponsor_target_id_1"]',
+                ).val() === "1"
+              ) {
+                var el = $(
+                  'select[name="field_suspected_state_sponsor_target_id"]',
+                );
+                el.parents(".form-item")
+                  .find(".select2-selection__rendered")
+                  .attr("title", "Unknown")
+                  .html("Unknown");
 
-      //           dropdowns.field_suspected_state_sponsor_target_id = {
-      //             id: el.attr("id"),
-      //             key: "Unknown",
-      //           };
-      //         }
-      //       }
-      //     });
+                dropdowns.field_suspected_state_sponsor_target_id = {
+                  id: el.attr("id"),
+                  key: "Unknown",
+                };
+              }
+            }
+          });
 
-      //   if (JSON.stringify(dropdowns) !== "{}") {
-      //     var filtersRendered = CFR.Utils.getTemplate(
-      //       "#selected-filters-template",
-      //       { dropdowns: dropdowns },
-      //     );
-      //     if (
-      //       $(".view-cst-timeline .view-filters .view-filters__selected")
-      //         .length === 0
-      //     ) {
-      //       $(".view-cst-timeline .view-filters").append(filtersRendered);
-      //     } else {
-      //       $(
-      //         ".view-cst-timeline .view-filters .view-filters__selected",
-      //       ).replaceWith(filtersRendered);
-      //     }
-      //   }
-      // };
+        if (JSON.stringify(dropdowns) !== "{}") {
+          var filtersRendered = CFR.Utils.getTemplate(
+            "#selected-filters-template",
+            { dropdowns: dropdowns },
+          );
+          if (
+            $(".view-cst-timeline .view-filters .view-filters__selected")
+              .length === 0
+          ) {
+            $(".view-cst-timeline .view-filters").append(filtersRendered);
+          } else {
+            $(
+              ".view-cst-timeline .view-filters .view-filters__selected",
+            ).replaceWith(filtersRendered);
+          }
+        }
+      };
 
       Drupal.behaviors.cst.attach.handleFilters = function () {
         $(".view-filters__selected-link").on("click", function (e) {

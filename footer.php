@@ -11,83 +11,83 @@
                         class="icon-fill" fill="none"></path>
                 </svg>
             </a>
+            <!--Footer Menu-->
             <?php
-                                        wp_nav_menu(
-                                            array(
-                                                'theme_location' => 'footer-menu',
-                                                'menu_class' => 'main-footer__menu',
-                                                'container' => false,
-                                                'fallback_cb' => false,
-                                            )
-                                        );
-                                        ?>
-            <!-- <ul class="main-footer__menu">
-                <li class="main-footer__menu-item">
-                    <a href="about.html">About CFR</a>
-                </li>
-                <li class="main-footer__menu-item">
-                    <a href="think-tank.html">Think Tank</a>
-                </li>
-                <li class="main-footer__menu-item">
-                    <a href="support-cfr.html">Support CFR</a>
-                </li>
-                <li class="main-footer__menu-item">
-                    <a href="media.html">For Media</a>
-                </li>
-                <li class="main-footer__menu-item">
-                    <a href="career-opportunities.html">Careers</a>
-                </li>
-                <li class="main-footer__menu-item">
-                    <a href="contact-us.html">Contact Us</a>
-                </li>
-            </ul> -->
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'footer-menu',
+                    'menu_class' => 'main-footer__menu',
+                    'container' => false,
+                    'fallback_cb' => false,
+                )
+            );
+            ?>
         </nav>
-
+        <!-- Social Links -->
+        <?php
+        $facebook = get_field('Facebook_Link', 'option');
+        $twitter = get_field('twitter_link', 'option');
+        $youtube = get_field('youtube_link', 'option');
+        $instagram = get_field('instagram_link', 'option');
+        $linkedin = get_field('linkdin_link', 'option');
+        ?>
         <div class="main-footer__share-kit-wrapper">
             <div class="share-kit  share-kit--icon-color-transparent-white share-kit--bg-color-white share-kit--small share-kit--theme-none" data-share-anchor="" data-share-query="" data-share-name="" data-share-description="" data-share-caption="" data-share-picture=""
                 data-share-type="">
                 <div class="share-kit__icons">
-                    <a class="share-kit__hotspot share-kit__facebook" href="https://www.facebook.com/councilonforeignrelations" target="_blank">
+                    <?php if($facebook): ?>
+                    <a class="share-kit__hotspot share-kit__facebook" href="<?php echo esc_url($facebook); ?>" target="_blank">
                         <svg viewbox="0 0 9 19" class="icon icon-facebook" xmlns="http://www.w3.org/2000/svg">
                             <title>Facebook</title>
                             <path d="M0 5.993h1.861V4.171c0-.801.021-2.04.6-2.807C3.071.552 3.91 0 5.35 0c2.347 0 3.336.336 3.336.336l-.465 2.777s-.776-.226-1.5-.226c-.723 0-1.371.26-1.371.99v2.116h2.967l-.206 2.71H5.35v9.42H1.86v-9.42H0v-2.71l4.203 4.532" class="icon-fill" fill="none"></path>
                         </svg>
                     </a>
-                    <a class="share-kit__hotspot share-kit__twitter" href="https://twitter.com/CFR_org" target="_blank">
+                    <?php endif; 
+                    if($twitter):
+                    ?>
+                    <a class="share-kit__hotspot share-kit__twitter" href="<?php echo esc_url($twitter); ?>" target="_blank">
                         <svg class="icon icon-twitter" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="19px" height="19px" viewbox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
                             <path d="M14.095479,10.316482L22.286354,1h-1.940718l-7.115352,8.087682L7.551414,1H1l8.589488,12.231093L1,23h1.940717  l7.509372-8.542861L16.448587,23H23L14.095479,10.316482z M11.436522,13.338465l-0.871624-1.218704l-6.924311-9.68815h2.981339  l5.58978,7.82155l0.867949,1.218704l7.26506,10.166271h-2.981339L11.436522,13.338465z"
                                 class="icon-fill" fill="none"></path>
                         </svg>
                     </a>
-                    <a class="share-kit__hotspot share-kit__youtube" rel="noopener" href="#" target="_blank">
+                    <?php endif;
+                    if($youtube):
+                    ?>
+                    <a class="share-kit__hotspot share-kit__youtube" rel="noopener" href="<?php echo esc_url($youtube); ?>" target="_blank">
                         <svg viewbox="0 0 19 13" class="icon icon-youtube" xmlns="http://www.w3.org/2000/svg">
                             <title>YouTube</title>
                             <path d="M7.817 8.968V3.82L12.6 6.333 7.817 8.968zm10.595-6.631C18.069.955 17.426.423 16.242.23 15.559.13 12.282 0 9.68 0h.011c-2.6 0-5.878.13-6.56.23C1.946.424 1.303.956.96 2.338.846 2.8.686 5.346.686 6.317v.213c0 .97.16 3.516.275 3.98.343 1.382.986 1.914 2.17 2.106.683.101 3.96.23 6.561.23h-.011c2.6 0 5.878-.129 6.56-.23 1.185-.192 1.828-.724 2.17-2.106.116-.464.275-3.009.275-3.98v-.213c0-.971-.159-3.516-.274-3.98z"
                                 class="icon-fill" fill="none"></path>
                         </svg>
                     </a>
-                    <a class="share-kit__hotspot share-kit__instagram" href="#" target="_blank">
+                    <?php endif; 
+                    if($instagram): ?>
+                    <a class="share-kit__hotspot share-kit__instagram" href="<?php echo esc_url($instagram); ?>" target="_blank">
                         <svg viewbox="0 0 19 19" class="icon icon-instagram" xmlns="http://www.w3.org/2000/svg">
                             <title>Instagram</title>
                             <path d="M9.703 5.495c-1.996 0-3.615 1.58-3.615 3.527 0 1.948 1.619 3.527 3.615 3.527 1.997 0 3.616-1.58 3.616-3.527 0-1.948-1.619-3.527-3.616-3.527zm6.949 2.169h-1.584c.15.493.23 1.014.23 1.555 0 3.014-2.505 5.458-5.595 5.458S4.11 12.233 4.11 9.219c0-.54.08-1.062.23-1.555H2.686v7.655c0 .396.322.72.716.72h12.534a.72.72 0 0 0 .716-.72V7.664zm-2.853-5.65a.815.815 0 0 0-.81.815v1.953c0 .449.364.816.81.816h2.034c.446 0 .81-.367.81-.816V2.83a.815.815 0 0 0-.81-.816H13.8zM2.997 0h13.379c1.27 0 2.31 1.047 2.31 2.326v13.47c0 1.28-1.04 2.326-2.31 2.326H2.996a2.325 2.325 0 0 1-2.31-2.326V2.326C.686 1.046 1.726 0 2.996 0z"
                                 class="icon-fill" fill="none"></path>
                         </svg>
                     </a>
-                    <a class="share-kit__hotspot share-kit__linkedin" href="#" target="_blank">
+                    <?php endif;
+                    if($linkedin): ?>
+                    <a class="share-kit__hotspot share-kit__linkedin" href="<?php echo esc_url($linkedin); ?>" target="_blank">
                         <svg viewbox="0 0 19 18" class="icon icon-linkedin" xmlns="http://www.w3.org/2000/svg">
                             <title>LinkedIn</title>
                             <path d="M18.447 17.014h-3.799c0-.163.008-4.169-.007-6.075a4.948 4.948 0 0 0-.151-1.214c-.366-1.386-1.929-1.876-3.037-.962-.536.442-.823 1.013-.822 1.727.007 2.038.003 4.485.003 6.524 0 .144 0-.175 0 0h-3.77V5.599h3.752v1.552c.122-.135.19-.199.244-.274.98-1.347 2.348-1.718 3.906-1.52 1.548.197 2.66 1.037 3.213 2.52.227.61.316 1.272.468 1.91v7.227zM.941 17.013h3.75V5.603H.941v11.41zM2.802 3.99c-.97-.001-1.764-.533-2.018-1.353C.523 1.795.794.887 1.5.422 2.286-.1 3.135-.133 3.969.298c.728.376 1.016 1.04.986 1.842-.04 1.09-.935 1.852-2.153 1.85z"
                                 class="icon-fill" fill="none"></path>
                         </svg>
                     </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
         <div class="main-footer__fineprint">
-            <span class="main-footer__fineprint-line">&copy;2025 Council on Foreign Relations.</span>
+            <span class="main-footer__fineprint-line">&copy;<?php echo date('Y'); ?> Council on Foreign Relations.</span>
             <span class="main-footer__fineprint-line">All rights reserved.</span>
             <span class="main-footer__fineprint-line">
-                <a href="#" class="main-footer__fineprint-link">Privacy Policy</a> and <a href="terms-use.html" class="main-footer__fineprint-link">Terms of Use</a>. </span>
+                <a href="https://www.cfr.org/privacy-policy" class="main-footer__fineprint-link">Privacy Policy</a> and <a href="https://www.cfr.org/terms-use" class="main-footer__fineprint-link">Terms of Use</a>. </span>
         </div>
     </div>
 </footer>

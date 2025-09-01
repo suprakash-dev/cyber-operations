@@ -18514,7 +18514,17 @@ body.page-node-type-cst-issue .view-footer a.btn-default:hover {
 	padding-bottom: 15px;
 	padding-right: 4px;
 }
-
+.view-cst-timeline.view-display-id-search_results .view-filters .form-inline{
+	border-bottom: 2px solid rgba(75, 83, 93, 0.5);
+	padding-bottom: 15px;
+}
+.search-page-form button{
+	border:none;
+	color: #f25d27 !important;
+	font-size: 24px;
+	line-height: 40px;
+	background: transparent!important;
+}
 .view-cst-timeline.view-display-id-search_results .view-filters .form-inline .form-actions .form-submit {
 	background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIyOSIgdmlld0JveD0iMCAwIDMwIDI5Ij48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZT0iI0YyNUQyNyIgc3Ryb2tlLXdpZHRoPSIyLjciPjxwYXRoIGQ9Ik0xMS45NDIgMjAuNjY0YzUuNDgyIDAgOS45MjUtNC4yMyA5LjkyNS05LjQ1IDAtNS4yMTktNC40NDMtOS40NS05LjkyNS05LjQ1LTUuNDgyIDAtOS45MjUgNC4yMzEtOS45MjUgOS40NSAwIDUuMjIgNC40NDMgOS40NSA5LjkyNSA5LjQ1ek0xOS4wMzIgMTcuOTY0bDkuOTI1IDkuNDUiLz48L2c+PC9zdmc+") no-repeat right;
 	border: none;
@@ -18727,7 +18737,7 @@ body.page-node-type-cst-issue .view-footer a.btn-default:hover {
 }
 
 .view-cst-timeline .view-filters__selected {
-	margin-top: 30px;
+	margin:0 0 30px 0px;
 }
 
 .view-cst-timeline .view-filters__selected-list {
@@ -18850,7 +18860,22 @@ body.page-node-type-cst-issue .view-footer a.btn-default:hover {
 	font-size: 16px;
 	max-width: 600px;
 }
-
+.view-cst-timeline .postlist .views-field-title{
+	max-width: 100%;
+}
+.nav-links{
+	display: flex;
+	justify-content: space-between;
+	padding:20px 0;
+}
+.nav-links a{
+	color: #04284a;
+    border: 1px solid #04284a;
+    border-radius: 0;
+    font-family: "Larsseit", sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+}
 @media (min-width:768px) {
 	.view-cst-timeline .views-field-title {
 		font-size: 18px;
@@ -33288,7 +33313,6 @@ body {
 	.page-project-holiday .main-nav__sub-category:first-child,
 	.page-project-wpe .main-nav__sub-category:first-child,
 	.page-project-summer .main-nav__sub-category:first-child,
-	.page-project-cst .main-nav__sub-category:first-child,
 	.page-project-modern-slavery .main-nav__sub-category:first-child,
 	.page-project-wpp .main-nav__sub-category:first-child {
 		display: none;
@@ -40812,9 +40836,9 @@ body li {
 }
 
 @media (min-width:992px) {
-	.page-project-cst .main-nav__sub-category:first-child {
+	/* .page-project-cst .main-nav__sub-category:first-child {
 		display: none;
-	}
+	} */
 }
 
 .page-project-cst .main-nav__sub-category a {
@@ -41895,7 +41919,7 @@ body.page-project-cst .mapboxgl-popup-content .map-view____description {
 }
 
 .page-project-cst .main-footer__fineprint {
-	width: 100%;
+	/* width: 100%; */
 	bottom: 0;
 }
 
@@ -42254,4 +42278,8 @@ body.page-project-cst .mapboxgl-popup-content .map-view____description {
 .hero2__cta a:active,
 .hero2__cta a:hover {
 	background: #f25d27;
+
+}
+.fancybox-content{
+	height: 100% !important;
 }

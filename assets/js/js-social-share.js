@@ -315,3 +315,39 @@ window.fbAsyncInit = function () {
    js.src = "//connect.facebook.net/en_US/sdk.js";
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
+
+
+ document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("share-btn")) {
+   
+    e.preventDefault();
+
+    let network = e.target.getAttribute("data-network");
+    let url     = e.target.getAttribute("data-url");
+    let title   = e.target.getAttribute("data-title");
+    let desc    = e.target.getAttribute("data-desc") || '';
+
+    let shareUrl = '';
+     //alert(network);
+    switch(network) {
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        break;
+      case 'twitter':
+        shareUrl = "https://twitter.com/intent/tweet?url=" + url + "&text=" + title;
+        break;
+      case 'linkedin':
+        shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${desc}&source=WordPress`;
+        break;
+      case 'email':
+        shareUrl = `mailto:?subject=${title}&body=${title} - ${url}`;
+        break;
+    }
+
+    window.open(
+      shareUrl,
+      'shareWindow',
+      'height=500,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes'
+    );
+  }
+});
